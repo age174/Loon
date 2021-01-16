@@ -46,7 +46,7 @@ function GetCookie() {
       var CV = $request.headers["Cookie"] || $request.headers["cookie"];
       if (CV.match(/(wq_skey=.+?wq_uin=|wq_uin=.+?wq_skey=)/)) {
         var CookieValue = CV.match(/wq_skey=.+?;/) + CV.match(/wq_uin=.+?;/);
-        var UserName = CV.match(/jdpin=(.+?);/)[1];
+        var UserName = decodeURI(CV.match(/jdpin=(.+?);/)[1]);
         var DecodeName = decodeURIComponent(UserName);
         var EncodeName = encodeURIComponent(UserName)
         var CookiesData = getCache();
